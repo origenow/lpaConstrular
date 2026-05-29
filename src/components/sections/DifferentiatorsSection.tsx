@@ -38,19 +38,23 @@ export function DifferentiatorsSection() {
         {items.map((item, index) => (
           <motion.div
             key={item.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, scale: 1, backgroundColor: "transparent" },
+              hover: { scale: 1.02, y: -5, backgroundColor: "var(--color-surface-container-low)" }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            whileHover="hover"
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 80 }}
-            whileHover={{
-              scale: 1.02,
-              y: -5,
-              backgroundColor: "var(--color-surface-container-low)"
-            }}
             className="flex flex-col gap-sm p-md border-4 border-transparent hover:border-on-surface hover:neo-brutalist-shadow transition-colors duration-200 cursor-pointer rounded-none"
           >
             <motion.span
-              whileHover={{ scale: 1.1, rotate: -3 }}
+              variants={{
+                visible: { scale: 1, rotate: 0 },
+                hover: { scale: 1.1, rotate: -3 }
+              }}
               className="font-headline-xl text-headline-xl text-primary leading-none inline-block w-fit select-none"
             >
               {item.id}
