@@ -17,13 +17,14 @@ const categorias = [
   {
     titulo: "MATERIAIS\nDE OBRA",
     desconto: "40%",
-    imagem: "/produtos/obra.png"
+    imagem: "/produtos/obra.png?v=2"
   }
 ];
 
 export function CategoriasSection() {
   return (
-    <section className="bg-background py-xl">
+    <section className="bg-background py-xl relative">
+
       <div className="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
           {categorias.map((cat, i) => (
@@ -40,6 +41,7 @@ export function CategoriasSection() {
                 src={cat.imagem}
                 alt={cat.titulo}
                 fill
+                unoptimized
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/30" />
@@ -57,6 +59,8 @@ export function CategoriasSection() {
           ))}
         </div>
       </div>
+
+
     </section>
   );
 }

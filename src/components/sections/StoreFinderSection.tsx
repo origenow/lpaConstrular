@@ -3,8 +3,9 @@
 import { stores } from "@/data/stores";
 import { motion } from "motion/react";
 import { MapPin, Clock, Phone, MessageCircle } from "lucide-react";
+import NextImage from "next/image";
 
-function LocationCard({ name, street, cityState, hours, phone, whatsappUrl, pendingPhone }: typeof stores[number]) {
+function LocationCard({ name, street, cityState, hours, phone, whatsappUrl, pendingPhone, cityImage }: typeof stores[number]) {
   return (
     <motion.div
       variants={{
@@ -15,13 +16,15 @@ function LocationCard({ name, street, cityState, hours, phone, whatsappUrl, pend
           transition: { type: "spring", stiffness: 120, damping: 15 }
         }
       }}
-      whileHover={{ y: -4 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      whileHover={{ y: -1, scale: 1.005, transition: { type: "spring", stiffness: 400, damping: 40 } }}
       className="flex flex-col p-6 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200"
     >
-      <h3 className="text-lg font-bold text-slate-900 mb-4 tracking-tight">
-        {name}
-      </h3>
+      <div className="flex items-center gap-3 mb-4">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 ring-2 ring-slate-100">
+          <NextImage src={cityImage} alt={name} fill className="object-cover" />
+        </div>
+        <h3 className="text-lg font-bold text-slate-900 tracking-tight">{name}</h3>
+      </div>
 
       <div className="flex flex-col gap-2.5 flex-1 mb-5">
         <div className="flex items-start gap-2.5">
@@ -52,13 +55,13 @@ function LocationCard({ name, street, cityState, hours, phone, whatsappUrl, pend
           rel="noopener noreferrer"
           whileHover={{ y: -1 }}
           whileTap={{ scale: 0.98 }}
-          className="premium-btn-green inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-6 py-2.5 text-white font-semibold text-sm shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer"
+          className="premium-btn-green inline-flex items-center justify-center gap-2 w-full px-6 py-3 text-white font-semibold text-sm cursor-pointer rounded-[20px]"
         >
           <MessageCircle className="w-4 h-4 shrink-0" />
           <span>WhatsApp</span>
         </motion.a>
       ) : pendingPhone ? (
-        <div className="inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-6 py-2.5 bg-slate-100 text-slate-400 font-medium text-sm rounded-lg cursor-default select-none">
+        <div className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-slate-100 text-slate-400 font-medium text-sm rounded-[20px] cursor-default select-none">
           <Phone className="w-4 h-4 shrink-0" />
           <span>Telefone a confirmar</span>
         </div>
@@ -69,8 +72,8 @@ function LocationCard({ name, street, cityState, hours, phone, whatsappUrl, pend
 
 export function StoreFinderSection() {
   return (
-    <section id="lojas" className="bg-slate-50 py-16 px-4 md:px-8 border-b border-slate-100">
-      <div className="max-w-5xl mx-auto">
+    <section id="lojas" className="bg-slate-50 py-16 border-b border-slate-100">
+      <div className="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
 
         <motion.div
           initial={{ opacity: 0, x: -10 }}

@@ -13,13 +13,14 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <PromoCarousel />
-      <HeroSection />
       <DifferentiatorsSection />
-      <CategoriasSection />
+      <HeroSection />
       <StoreFinderSection />
       <SocialProofSection />
+      <CategoriasSection />
       <CtaSection />
       <Footer />
     </main>
+
   );
 }

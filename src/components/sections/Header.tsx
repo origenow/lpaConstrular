@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
@@ -61,12 +61,12 @@ export function Header() {
           className="flex items-center gap-xs cursor-pointer select-none"
         >
           <Image
-            src="/logo/LogoAConstrular.png"
+            src="/logo/logo_certo.webp"
             alt="A Constrular"
             width={180}
             height={64}
             priority
-            className="h-[52px] w-auto object-contain shrink-0"
+            className="h-[40px] w-auto object-contain shrink-0"
           />
         </motion.div>
 
@@ -101,8 +101,9 @@ export function Header() {
             href="#"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="premium-btn text-white font-semibold text-sm px-5 py-2 cursor-pointer select-none"
+            className="premium-btn inline-flex items-center justify-center gap-2 text-white font-semibold text-sm px-6 py-3 cursor-pointer select-none rounded-[20px]"
           >
+            <Phone className="w-4 h-4 shrink-0" />
             Fale Conosco
           </motion.a>
         </nav>
@@ -110,7 +111,7 @@ export function Header() {
         {/* Mobile Nav Toggle */}
         <motion.button
           whileTap={{ scale: 0.9 }}
-          className="md:hidden text-text-primary p-1 border-2 border-transparent active:border-border-light rounded-md"
+          className="md:hidden text-text-primary p-1 border-2 border-transparent active:border-border-light rounded-[20px]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -146,8 +147,9 @@ export function Header() {
               href="#"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="premium-btn text-white font-semibold text-sm py-3 text-center shadow-sm mt-3 select-none"
+              className="premium-btn inline-flex items-center justify-center gap-2 text-white font-semibold text-sm px-6 py-3 shadow-sm mt-3 select-none rounded-[20px]"
             >
+              <Phone className="w-4 h-4 shrink-0" />
               Fale Conosco
             </motion.a>
           </motion.div>

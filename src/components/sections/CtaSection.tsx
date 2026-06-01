@@ -48,7 +48,7 @@ export function CtaSection() {
           }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="premium-btn-green inline-flex items-center justify-center gap-3 text-white font-semibold text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 w-full sm:w-auto cursor-pointer shadow-md select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          className="premium-btn-green inline-flex items-center justify-center gap-2 text-white font-semibold text-sm px-6 py-3 w-full sm:w-auto cursor-pointer select-none rounded-[20px]"
         >
           <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
           <span>Falar no WhatsApp</span>

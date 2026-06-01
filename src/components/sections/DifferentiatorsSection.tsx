@@ -23,17 +23,7 @@ export function DifferentiatorsSection() {
 
   return (
     <section className="bg-surface py-xl relative">
-      <svg
-        className="absolute -bottom-px left-0 w-full h-12 text-background"
-        viewBox="0 0 1200 60"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M0,30 C150,60 350,0 600,30 C850,60 1050,0 1200,30 L1200,60 L0,60 Z"
-          fill="currentColor"
-        />
-      </svg>
+
       <div className="max-w-[1280px] mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-lg">
         {items.map((item, index) => (
           <motion.div
