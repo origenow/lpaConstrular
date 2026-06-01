@@ -55,7 +55,7 @@ export function SocialProofSection() {
   };
 
   return (
-    <section ref={containerRef} className="bg-surface py-16 border-y border-border-light overflow-hidden">
+    <section id="sobre" ref={containerRef} className="bg-surface py-16 border-y border-border-light overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-margin-desktop">
         <motion.div 
           initial="hidden"
