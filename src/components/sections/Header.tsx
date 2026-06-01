@@ -61,16 +61,13 @@ export function Header() {
           className="flex items-center gap-xs cursor-pointer select-none"
         >
           <Image
-            src="/logo/logo_simbol.svg"
+            src="/logo/LogoAConstrular.png"
             alt="A Constrular"
-            width={72}
-            height={72}
+            width={180}
+            height={64}
             priority
-            className="h-[64px] w-[64px] object-contain shrink-0"
+            className="h-[52px] w-auto object-contain shrink-0"
           />
-          <h1 className="font-bebas text-3xl uppercase text-text-primary tracking-wider shrink-0 mt-0.5">
-            A CONSTRULAR
-          </h1>
         </motion.div>
 
         {/* Desktop Navigation */}

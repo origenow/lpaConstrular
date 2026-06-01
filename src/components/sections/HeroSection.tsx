@@ -104,15 +104,14 @@ export function HeroSection() {
                 transition={{ duration: 0.4 }}
                 className="w-full h-full relative"
               >
-                <Image 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBepQktP8eYNBqc1ocwZ0GBVPiFNmKvGq5hCI1-SFA5TcbGZrVaE5mGwVgELwr_ruEp7C1evn4ohxsUQj-5aL4tDGNu6Eo4dF957y6UaHx4dMUnc6gt-HdQhFYqXunJcNKYmhx0Q0HMeX3VazHl_P7ElRK1SJgiMHA-9orM0e81AvYyBTEtFm_MSGXyj-sp-AwQA0GnfJXYS2b7Od9iWHwiYW67FuPMYetpDJffmwIQHzDnOh8HISMtwF3qLQR7qtseNWUOjwdV1VE" 
-                  alt="Canteiro de obras da A Constrular"
+                <Image
+                  src="/background/tintasCoral.png"
+                  alt="Tintas Coral — A Constrular"
                   fill
                   priority={true}
                   loading="eager"
                   fetchPriority="high"
                   className="object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-                  unoptimized
                 />
               </motion.div>
             </div>

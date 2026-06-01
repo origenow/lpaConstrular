@@ -5,19 +5,19 @@ import { motion } from "motion/react";
 
 const categorias = [
   {
-    titulo: "MATERIAIS\nDE OBRA",
-    desconto: "40%",
-    imagem: "/carrossel/carrossel.png"
-  },
-  {
     titulo: "ACABAMENTOS\n& PISOS",
     desconto: "25%",
-    imagem: "/carrossel/c2.png"
+    imagem: "/produtos/piso.png"
   },
   {
     titulo: "FERRAMENTAS\n& ELÉTRICA",
     desconto: "30%",
-    imagem: "/carrossel/c3.png"
+    imagem: "/produtos/ferramentas.png"
+  },
+  {
+    titulo: "MATERIAIS\nDE OBRA",
+    desconto: "40%",
+    imagem: "/produtos/obra.png"
   }
 ];
 
@@ -48,18 +48,10 @@ export function CategoriasSection() {
                 {cat.titulo}
               </h3>
 
-              <div
-                className="absolute bottom-0 right-0 bg-red-600 text-white font-bold flex flex-col items-center justify-center"
-                style={{
-                  clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-                  width: "130px",
-                  height: "130px",
-                  paddingTop: "55px",
-                  paddingLeft: "40px"
-                }}
-              >
-                <span className="text-xs leading-none">ATÉ</span>
-                <span className="text-2xl leading-none mt-1">{cat.desconto}</span>
+              <div className="absolute bottom-4 right-4 flex flex-col items-center justify-center bg-red-600 text-white rounded-full w-[72px] h-[72px] shadow-lg ring-2 ring-white/30">
+                <span className="text-[10px] font-semibold uppercase leading-none tracking-wider">ATÉ</span>
+                <span className="text-2xl font-black leading-none mt-0.5">{cat.desconto}</span>
+                <span className="text-[10px] font-semibold uppercase leading-none tracking-wider">OFF</span>
               </div>
             </motion.div>
           ))}
