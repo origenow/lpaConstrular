@@ -3,6 +3,7 @@ import { PromoCarousel } from "@/components/sections/PromoCarousel";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { DifferentiatorsSection } from "@/components/sections/DifferentiatorsSection";
 import { CategoriasSection } from "@/components/sections/CategoriasSection";
+import { CategoriasStoriesSection } from "@/components/sections/CategoriasStoriesSection";
 import { StoreFinderSection } from "@/components/sections/StoreFinderSection";
 import { SocialProofSection } from "@/components/sections/SocialProofSection";
 import { CtaSection } from "@/components/sections/CtaSection";
@@ -19,6 +20,7 @@ export default function Home() {
       <SocialProofSection />
       <CategoriasSection />
       <CtaSection />
+      <CategoriasStoriesSection />
       <Footer />
     </main>
 

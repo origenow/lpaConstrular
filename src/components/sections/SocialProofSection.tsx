@@ -53,9 +53,9 @@ export function SocialProofSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.9, y: 15 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
       transition: { type: "spring" as const, stiffness: 100, damping: 15 }
     }
@@ -64,29 +64,29 @@ export function SocialProofSection() {
   return (
     <section id="sobre" ref={containerRef} className="bg-surface py-16 border-y border-border-light relative">
       <div className="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           className="flex flex-col md:flex-row justify-around items-center gap-10 md:gap-lg"
         >
-          
+
           {/* Stat 1 */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             className="text-center cursor-pointer p-6 select-none"
           >
             <p className="font-bebas text-5xl md:text-6xl text-primary leading-none">
-              <Counter to={25} trigger={isInView} />+
+              <Counter to={34} trigger={isInView} />+
             </p>
             <p className="font-label-bold text-sm text-text-secondary uppercase tracking-widest mt-2">
               Anos de Mercado
             </p>
           </motion.div>
-          
+
           {/* Stat 2 */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             className="text-center cursor-pointer p-6 select-none"
@@ -98,9 +98,9 @@ export function SocialProofSection() {
               Obras Atendidas
             </p>
           </motion.div>
-          
+
           {/* Stat 3 */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             className="text-center cursor-pointer p-6 select-none"
