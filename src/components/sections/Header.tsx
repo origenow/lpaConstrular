@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 const navItems = [
   { label: "Home", href: "#" },
+  { label: "Produtos", href: "#produtos" },
   { label: "Lojas", href: "#lojas" },
   { label: "Sobre", href: "#sobre" },
 ];
@@ -17,6 +18,7 @@ export function Header() {
 
   useEffect(() => {
     const sectionMap: Record<string, string> = {
+      produtos: "Produtos",
       lojas: "Lojas",
       sobre: "Sobre",
     };
