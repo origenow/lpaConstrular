@@ -3,8 +3,12 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import type React from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export function HeroSection() {
+  const { ref, isRevealed } = useScrollReveal();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,7 +30,8 @@ export function HeroSection() {
   };
 
   return (
-    <section className="bg-background text-text-primary relative overflow-hidden border-b border-border-light">
+    <section ref={ref as React.Ref<HTMLElement>} className="bg-background text-text-primary relative overflow-hidden border-b border-border-light">
+      <div className={`section-curtain absolute inset-0 z-0 pointer-events-none${isRevealed ? " is-revealed" : ""}`} />
 
       {/* Background Decorative Radial Glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none select-none z-0" />

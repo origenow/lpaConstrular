@@ -182,4 +182,26 @@
     background-size: 200% auto !important;
     animation: pulse512-green 2s infinite !important;
   }
+
+  .section-curtain {
+    background: linear-gradient(180deg, #e4e6ec 0%, #eef0f5 55%, #f6f7fa 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.7s ease-in-out;
+    will-change: transform;
+  }
+  .section-curtain.is-revealed {
+    transform: scaleY(1);
+  }
+
+  .section-curtain-dark {
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.15) 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.7s ease-in-out;
+    will-change: transform;
+  }
+  .section-curtain-dark.is-revealed {
+    transform: scaleY(1);
+  }
 }

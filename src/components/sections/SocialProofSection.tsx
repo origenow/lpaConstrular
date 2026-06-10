@@ -2,6 +2,8 @@
 
 import { motion, useInView } from "motion/react";
 import { useEffect, useState, useRef } from "react";
+import type React from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface CounterProps {
   from?: number;
@@ -50,6 +52,7 @@ function Counter({ from = 0, to, duration = 2.5, trigger }: CounterProps) {
 export function SocialProofSection() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const { ref: curtainRef, isRevealed } = useScrollReveal();
 
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.9, y: 15 },
@@ -62,8 +65,9 @@ export function SocialProofSection() {
   };
 
   return (
-    <section id="sobre" ref={containerRef} className="bg-surface py-16 border-y border-border-light relative">
-      <div className="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <section id="sobre" ref={curtainRef as React.Ref<HTMLElement>} className="bg-surface py-16 border-y border-border-light relative overflow-hidden">
+      <div className={`section-curtain absolute inset-0 z-0 pointer-events-none${isRevealed ? " is-revealed" : ""}`} />
+      <div ref={containerRef} className="relative z-10 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -117,7 +121,7 @@ export function SocialProofSection() {
       </div>
 
       <svg
-        className="absolute -bottom-px left-0 w-full h-12 text-background z-10"
+        className="absolute -bottom-px left-0 w-full h-12 text-background z-20"
         viewBox="0 0 1200 60"
         preserveAspectRatio="none"
         aria-hidden="true"

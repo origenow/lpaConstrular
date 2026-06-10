@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
+import type React from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const WHATSAPP_BASE = "https://wa.me/553333411200?text=";
 
@@ -50,9 +52,12 @@ const products: Product[] = [
 
 
 export function CategoriasStoriesSection() {
+  const { ref, isRevealed } = useScrollReveal();
+
   return (
-    <section id="produtos" className="bg-surface py-10 border-b border-border-light">
-      <div className="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <section ref={ref as React.Ref<HTMLElement>} id="produtos" className="bg-surface py-10 border-b border-border-light relative overflow-hidden">
+      <div className={`section-curtain absolute inset-0 z-0 pointer-events-none${isRevealed ? " is-revealed" : ""}`} />
+      <div className="relative z-10 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
