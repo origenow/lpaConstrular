@@ -12,9 +12,12 @@ export function useScrollReveal(triggerRatio = 0.15) {
     const update = () => {
       ticking = false;
       const rect = el.getBoundingClientRect();
-      const entered = rect.top <= window.innerHeight * (1 - triggerRatio);
-      const notExited = rect.bottom >= window.innerHeight * 0.75;
-      setIsRevealed(entered && notExited);
+      const vh = window.innerHeight;
+      // Entrando pela parte de baixo
+      const entering = rect.top >= 0 && rect.top <= vh * (1 - triggerRatio);
+      // Já passou o topo mas ainda está visível o suficiente
+      const stillVisible = rect.top < 0 && rect.bottom >= vh * 0.75;
+      setIsRevealed(entering || stillVisible);
     };
 
     const onScroll = () => {
