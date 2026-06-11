@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface SectionCurtainProps {
@@ -8,7 +9,7 @@ interface SectionCurtainProps {
   className?: string;
   curtainClassName?: string;
   triggerRatio?: number;
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 }
 
 const SectionCurtain = ({
