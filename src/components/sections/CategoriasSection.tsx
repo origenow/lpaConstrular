@@ -6,17 +6,14 @@ import { motion } from "motion/react";
 const categorias = [
   {
     titulo: "ACABAMENTOS\n& PISOS",
-    desconto: "25%",
     imagem: "/produtos/piso.png"
   },
   {
     titulo: "FERRAMENTAS\n& ELÉTRICA",
-    desconto: "30%",
     imagem: "/produtos/ferramentas.png"
   },
   {
     titulo: "MATERIAIS\nDE OBRA",
-    desconto: "40%",
     imagem: "/produtos/obra.png?v=2"
   }
 ];
@@ -35,8 +32,11 @@ export function CategoriasSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ scale: 1.02, y: -4 }}
-              className="relative overflow-hidden cursor-pointer rounded-t-full aspect-[3/4] shadow-md"
+              className="group relative overflow-hidden cursor-pointer rounded-t-full aspect-[3/4] shadow-md"
             >
+              {/* Shine sweep on hover */}
+              <div className="absolute inset-0 z-20 pointer-events-none translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12" />
+
               <Image
                 src={cat.imagem}
                 alt={cat.titulo}
@@ -50,10 +50,8 @@ export function CategoriasSection() {
                 {cat.titulo}
               </h3>
 
-              <div className="absolute bottom-4 right-4 flex flex-col items-center justify-center bg-red-600 text-white rounded-full w-[72px] h-[72px] shadow-lg ring-2 ring-white/30">
-                <span className="text-[10px] font-semibold uppercase leading-none tracking-wider">ATÉ</span>
-                <span className="text-2xl font-black leading-none mt-0.5">{cat.desconto}</span>
-                <span className="text-[10px] font-semibold uppercase leading-none tracking-wider">OFF</span>
+              <div className="absolute bottom-4 right-4 flex flex-col items-center justify-center bg-red-600 text-white rounded-full w-[72px] h-[72px] shadow-lg ring-2 ring-white/30 text-center px-1">
+                <span className="text-[9px] font-bold uppercase leading-tight tracking-wide">Preços<br/>Imperdíveis</span>
               </div>
             </motion.div>
           ))}
