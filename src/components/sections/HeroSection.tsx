@@ -46,7 +46,7 @@ export function HeroSection() {
         >
           <motion.span
             variants={itemVariants}
-            className="bg-primary-soft text-primary font-bold text-xs uppercase tracking-widest px-4 py-1.5 self-start rounded-full border border-primary/20 select-none"
+            className="bg-white/30 backdrop-blur-md text-primary font-bold text-xs uppercase tracking-widest px-4 py-1.5 self-start rounded-full border border-white/40 shadow-sm select-none"
           >
             Atendimento direto com nossa equipe
           </motion.span>

@@ -15,9 +15,13 @@ interface Product {
   title: string;
   label: string;
   image: string;
+  cover?: boolean;
 }
 
 const products: Product[] = [
+  { id: 31, title: "Argamassa Cimentcola",       label: "Interno ACI 20kg, Quartzolit",     image: "/produtos/p_vendidos/argamassa.jpeg" },
+  { id: 32, title: "Tela Soldada Galvanizada",   label: "Malha de aço para construção",     image: "/produtos/p_vendidos/tela.jpeg"      },
+  { id: 33, title: "Quadro Decorativo Jesus",    label: "Arte religiosa em canvas",         image: "/produtos/p_vendidos/jesus.jpeg", cover: true },
   { id: 1,  title: "Coral Rende Muito",          label: "Tinta concentrada azul",           image: "/produtos/p/tinta.webp"        },
   { id: 2,  title: "Coral Rende Muito",          label: "Tinta concentrada bege",           image: "/produtos/p/tinta2.webp"       },
   { id: 3,  title: "Pincel Tigre 3\"",           label: "Cabo laranja, cerdas naturais",    image: "/produtos/p/pincel.webp"       },
@@ -87,11 +91,11 @@ export function CategoriasStoriesSection() {
               onKeyDown={(e) => e.key === "Enter" && window.open(storyWhatsAppUrl(product.title), "_blank", "noopener")}
             >
               {/* Image */}
-              <div className="relative aspect-square bg-white p-3 shrink-0">
+              <div className="relative aspect-square bg-white shrink-0 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-full object-contain"
+                  className={`absolute inset-0 w-full h-full ${product.cover ? "object-cover object-top" : "object-contain p-3"}`}
                 />
                 {/* Dark overlay on hover */}
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />

@@ -46,7 +46,7 @@ export function CategoriasSection() {
               />
               <div className="absolute inset-0 bg-black/30" />
 
-              <h3 className="absolute inset-0 flex items-center justify-center text-center text-white font-headline-md text-headline-md uppercase whitespace-pre-line px-4 drop-shadow-lg">
+              <h3 className="absolute inset-0 flex items-center justify-center text-center text-white font-headline-md text-headline-md uppercase whitespace-pre-line px-4 drop-shadow-lg transition-transform duration-300 ease-out group-hover:scale-110">
                 {cat.titulo}
               </h3>
 
