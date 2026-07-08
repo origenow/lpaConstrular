@@ -31,10 +31,11 @@ export function HeroSection() {
 
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="bg-background text-text-primary relative overflow-hidden border-b border-border-light">
-      <div className={`section-curtain absolute inset-0 z-0 pointer-events-none${isRevealed ? " is-revealed" : ""}`} />
+      <div className="relative overflow-hidden">
+        <div className={`section-curtain absolute inset-0 z-0 pointer-events-none${isRevealed ? " is-revealed" : ""}`} />
 
-      {/* Background Decorative Radial Glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none select-none z-0" />
+        {/* Background Decorative Radial Glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none select-none z-0" />
 
       {/* Left content — constrained to container */}
       <div className="relative z-10 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
@@ -102,8 +103,9 @@ export function HeroSection() {
         {/* Fade na borda esquerda para blend com o fundo */}
         <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background/60 to-transparent pointer-events-none z-10" />
       </motion.div>
+      </div>
 
-      {/* Imagem mobile — inline abaixo do texto */}
+      {/* Imagem mobile — inline abaixo do texto, fora da cortina */}
       <div className="md:hidden w-full overflow-hidden">
         <Image
           src="/background/tintasCoral.png"
