@@ -5,11 +5,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 
+// Na mesma ordem em que as seções aparecem na página (page.tsx).
 const navItems = [
   { label: "Home", href: "#" },
-  { label: "Produtos", href: "#produtos" },
   { label: "Lojas", href: "#lojas" },
   { label: "Sobre", href: "#sobre" },
+  { label: "Produtos", href: "#produtos" },
 ];
 
 export function Header() {
@@ -17,8 +18,8 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
-    // Em ordem de documento (lojas → sobre → produtos), não na ordem do menu:
-    // é isso que faz "a última seção visível vence" apontar para a seção certa.
+    // Em ordem de documento (lojas → sobre → produtos): é isso que faz
+    // "a última seção visível vence" apontar para a seção certa.
     const sections = [
       { id: "lojas", label: "Lojas" },
       { id: "sobre", label: "Sobre" },
