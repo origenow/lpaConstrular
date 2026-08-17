@@ -100,7 +100,9 @@ export function Header() {
           })}
 
           <motion.a
-            href="#"
+            href="https://wa.me/553333411200"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="premium-btn inline-flex items-center justify-center gap-2 text-white font-semibold text-sm px-6 py-3 cursor-pointer select-none rounded-[20px]"
@@ -146,7 +148,9 @@ export function Header() {
             ))}
 
             <motion.a
-              href="#"
+              href="https://wa.me/553333411200"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               className="premium-btn inline-flex items-center justify-center gap-2 text-white font-semibold text-sm px-6 py-3 shadow-sm mt-3 select-none rounded-[20px]"

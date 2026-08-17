@@ -40,7 +40,7 @@ export function CtaSection() {
 
         {/* Premium conversion WhatsApp CTA Button */}
         <motion.a
-          href="https://wa.me/5511999999999"
+          href="https://wa.me/553333411200"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{

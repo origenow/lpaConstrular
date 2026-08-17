@@ -67,14 +67,17 @@ export function HeroSection() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="pt-sm">
-            <motion.button
+            <motion.a
+              href="https://wa.me/553333411200"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               className="premium-btn inline-flex items-center gap-2 text-white font-semibold py-3 px-6 shadow-lg shadow-primary/15 cursor-pointer text-sm select-none rounded-[20px]"
             >
               <span>Solicitar Orçamento</span>
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

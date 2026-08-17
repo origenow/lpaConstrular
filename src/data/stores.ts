@@ -59,7 +59,8 @@ export const stores: Store[] = [
     street: "Av. Dr. Jorge Hannas, 4901",
     cityState: "Manhuaçu - MG, 36906-440",
     hours: "Seg–Sex 7h30–18h | Sáb 7h–12h",
-    pendingPhone: true,
+    phone: "(33) 8401-1796",
+    whatsappUrl: "https://wa.me/553384011796",
     cityImage: "/cidades/manhuacu-igreja-matriz.jpg",
   },
   // Alto Jequitibá
