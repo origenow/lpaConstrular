@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
+/**
+ * Revela a seção quando ela entra no viewport.
+ *
+ * Usa IntersectionObserver em vez de um listener de scroll: o cálculo acontece
+ * fora da main thread, sem getBoundingClientRect() a cada frame — que forçava
+ * reflow síncrono durante o scroll.
+ */
 export function useScrollReveal(triggerRatio = 0.15) {
   const ref = useRef<HTMLElement>(null);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -8,29 +15,15 @@ export function useScrollReveal(triggerRatio = 0.15) {
     const el = ref.current;
     if (!el) return;
 
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const rect = el.getBoundingClientRect();
-      const entered = rect.top <= window.innerHeight * (1 - triggerRatio);
-      const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
-      setIsRevealed(entered && isVisible);
-    };
+    // Espelha o comportamento antigo: dispara quando o topo do elemento passa
+    // de (1 - triggerRatio) da altura da janela, encolhendo a "raiz" por baixo.
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsRevealed(entry.isIntersecting),
+      { rootMargin: `0px 0px -${Math.round(triggerRatio * 100)}% 0px`, threshold: 0 }
+    );
 
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [triggerRatio]);
 
   return { ref, isRevealed };

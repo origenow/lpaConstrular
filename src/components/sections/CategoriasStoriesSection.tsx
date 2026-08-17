@@ -1,8 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import type React from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+
+/* Larguras reais do card no grid (2→6 colunas conforme o breakpoint), com folga para 2x DPR. */
+const PRODUCT_SIZES =
+  "(min-width: 1280px) 200px, (min-width: 1024px) 240px, (min-width: 768px) 200px, (min-width: 640px) 220px, 50vw";
 
 const WHATSAPP_BASE = "https://wa.me/553333411200?text=";
 
@@ -19,9 +24,9 @@ interface Product {
 }
 
 const products: Product[] = [
-  { id: 31, title: "Argamassa Cimentcola",       label: "Interno ACI 20kg, Quartzolit",     image: "/produtos/p_vendidos/argamassa.jpeg" },
-  { id: 32, title: "Tela Soldada Galvanizada",   label: "Malha de aço para construção",     image: "/produtos/p_vendidos/tela.jpeg"      },
-  { id: 33, title: "Quadro Decorativo Jesus",    label: "Arte religiosa em canvas",         image: "/produtos/p_vendidos/jesus.jpeg", cover: true },
+  { id: 31, title: "Argamassa Cimentcola",       label: "Interno ACI 20kg, Quartzolit",     image: "/produtos/p_vendidos/argamassa.webp" },
+  { id: 32, title: "Tela Soldada Galvanizada",   label: "Malha de aço para construção",     image: "/produtos/p_vendidos/tela.webp"      },
+  { id: 33, title: "Quadro Decorativo Jesus",    label: "Arte religiosa em canvas",         image: "/produtos/p_vendidos/jesus.webp", cover: true },
   { id: 1,  title: "Coral Rende Muito",          label: "Tinta concentrada azul",           image: "/produtos/p/tinta.webp"        },
   { id: 2,  title: "Coral Rende Muito",          label: "Tinta concentrada bege",           image: "/produtos/p/tinta2.webp"       },
   { id: 3,  title: "Pincel Tigre 3\"",           label: "Cabo laranja, cerdas naturais",    image: "/produtos/p/pincel.webp"       },
@@ -92,10 +97,12 @@ export function CategoriasStoriesSection() {
             >
               {/* Image */}
               <div className="relative aspect-square bg-white shrink-0 overflow-hidden">
-                <img
+                <Image
                   src={product.image}
                   alt={product.title}
-                  className={`absolute inset-0 w-full h-full ${product.cover ? "object-cover object-top" : "object-contain p-3"}`}
+                  fill
+                  sizes={PRODUCT_SIZES}
+                  className={product.cover ? "object-cover object-top" : "object-contain p-3"}
                 />
                 {/* Dark overlay on hover */}
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />

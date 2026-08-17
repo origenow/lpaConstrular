@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { MessageCircle } from "lucide-react";
 
@@ -9,12 +10,17 @@ export function CtaSection() {
       aria-labelledby="cta-heading"
       className="py-16 md:py-24 relative overflow-hidden flex flex-col items-center justify-center text-center border-b border-slate-900"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: "url('/background/bg.png')" }}
+      {/* Background image — via next/image para passar pelo otimizador.
+          Nada de background-attachment: fixed: força repaint a cada frame de scroll. */}
+      <Image
+        src="/background/bg.webp"
+        alt=""
+        fill
+        sizes="100vw"
         aria-hidden="true"
+        className="object-cover object-center z-0 select-none pointer-events-none"
       />
+
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/30 z-0" aria-hidden="true" />
 

@@ -20,7 +20,7 @@ export const stores: Store[] = [
     hours: "Seg–Sex 7h–18h | Sáb 7h–12h",
     phone: "(33) 3341-1200",
     whatsappUrl: "https://wa.me/553333411200",
-    cityImage: "/cidades/trevo-manhumirim.jpg",
+    cityImage: "/cidades/trevo-manhumirim.webp",
   },
   {
     id: "trevo",
@@ -30,7 +30,7 @@ export const stores: Store[] = [
     hours: "Seg–Sex 7h–18h | Sáb 7h–12h",
     phone: "(33) 3341-2129",
     whatsappUrl: "https://wa.me/553333412129",
-    cityImage: "/cidades/trevo-manhumirim.jpg",
+    cityImage: "/cidades/trevo-manhumirim.webp",
   },
   {
     id: "deposito",
@@ -40,7 +40,7 @@ export const stores: Store[] = [
     hours: "Seg–Sex 7h–18h | Sáb 7h–12h",
     phone: "(33) 3341-1360",
     whatsappUrl: "https://wa.me/553333411360",
-    cityImage: "/cidades/trevo-manhumirim.jpg",
+    cityImage: "/cidades/trevo-manhumirim.webp",
   },
   // Manhuaçu (2 unidades)
   {
@@ -51,7 +51,7 @@ export const stores: Store[] = [
     hours: "Seg–Sex 7h30–18h | Sáb 7h30–12h",
     phone: "(33) 3339-1200",
     whatsappUrl: "https://wa.me/553333391200",
-    cityImage: "/cidades/manhuacu-igreja-matriz.jpg",
+    cityImage: "/cidades/manhuacu-igreja-matriz.webp",
   },
   {
     id: "ponte-aldeia",
@@ -61,7 +61,7 @@ export const stores: Store[] = [
     hours: "Seg–Sex 7h30–18h | Sáb 7h–12h",
     phone: "(33) 8401-1796",
     whatsappUrl: "https://wa.me/553384011796",
-    cityImage: "/cidades/manhuacu-igreja-matriz.jpg",
+    cityImage: "/cidades/manhuacu-igreja-matriz.webp",
   },
   // Alto Jequitibá
   {
@@ -83,6 +83,6 @@ export const stores: Store[] = [
     hours: "Seg–Sex 7h–18h | Sáb 7h–12h",
     phone: "(33) 9 7400-9292",
     whatsappUrl: "https://wa.me/5533974009292",
-    cityImage: "/cidades/martinsSoares.jpg",
+    cityImage: "/cidades/martinsSoares.webp",
   },
 ];

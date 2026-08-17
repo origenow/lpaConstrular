@@ -94,12 +94,14 @@ export function HeroSection() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="w-full"
         >
+          {/* Mesmo src/width/height/sizes da versão mobile abaixo: o srcSet gerado
+              é idêntico, então o navegador reaproveita um único download. */}
           <Image
-            src="/background/tintasCoral.png"
+            src="/background/tintasCoral.webp"
             alt="Tintas Coral — A Constrular"
-            width={1200}
-            height={800}
-            priority
+            width={1400}
+            height={1045}
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="w-full h-auto"
           />
         </motion.div>
@@ -111,10 +113,11 @@ export function HeroSection() {
       {/* Imagem mobile — inline abaixo do texto, fora da cortina */}
       <div className="md:hidden w-full overflow-hidden">
         <Image
-          src="/background/tintasCoral.png"
+          src="/background/tintasCoral.webp"
           alt="Tintas Coral — A Constrular"
-          width={900}
-          height={600}
+          width={1400}
+          height={1045}
+          sizes="(min-width: 768px) 50vw, 100vw"
           className="w-full h-auto"
         />
       </div>

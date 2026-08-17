@@ -1,23 +1,22 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselImages = [
   {
-    src: "/carrossel/carrossel.png",
+    desktopSrcSet: "/carrossel/carrossel-1280.webp 1280w, /carrossel/carrossel-1920.webp 1920w",
     mobileSrc: "/carrossel/c_mob.webp",
     alt: "Ofertas de Construção - A Constrular"
   },
   {
-    src: "/carrossel/c2.png",
+    desktopSrcSet: "/carrossel/c2-1280.webp 1280w, /carrossel/c2-1920.webp 1920w",
     mobileSrc: "/carrossel/c_2_mob.webp",
     alt: "Variedade em Acabamentos e Ferramentas"
   },
   {
-    src: "/carrossel/c3.png",
+    desktopSrcSet: "/carrossel/c3-1280.webp 1280w, /carrossel/c3-1920.webp 1920w",
     mobileSrc: "/carrossel/c_3_mob.webp",
     alt: "Materiais do Alicerce ao Acabamento"
   }
@@ -71,22 +70,14 @@ export function PromoCarousel() {
   }, [isHovered, handleNext]);
 
   return (
-    <section 
+    // O aspect-ratio no CSS reserva a altura sem precisar de uma imagem "fantasma" extra.
+    // 64/15 = proporção nativa das artes desktop (1920x450).
+    <section
       aria-label="Carrossel de Destaques"
-      className="relative w-full aspect-[4/3] md:aspect-auto overflow-hidden border-b border-border-light group"
+      className="relative w-full aspect-[4/3] md:aspect-[64/15] overflow-hidden border-b border-border-light group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Imagem fantasma (desktop) — define a altura natural sem renderizar visualmente */}
-      <Image
-        src={carouselImages[currentIndex].src}
-        alt=""
-        width={1920}
-        height={600}
-        aria-hidden
-        className="hidden md:block w-full h-auto invisible pointer-events-none select-none"
-      />
-
       {/* Slides Area */}
       <div className="absolute inset-0 md:inset-0 w-full h-full">
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -103,22 +94,24 @@ export function PromoCarousel() {
             }}
             className="absolute inset-0 w-full h-full"
           >
-            {/* Desktop — sem zoom, sem esticamento */}
-            <Image
-              src={carouselImages[currentIndex].src}
-              alt={carouselImages[currentIndex].alt}
-              fill
-              priority
-              className="hidden md:block object-contain object-center select-none pointer-events-none"
-            />
-            {/* Mobile */}
-            <Image
-              src={carouselImages[currentIndex].mobileSrc}
-              alt={carouselImages[currentIndex].alt}
-              fill
-              priority
-              className="md:hidden object-cover object-center select-none pointer-events-none"
-            />
+            {/* <picture> faz art direction de verdade: o navegador baixa APENAS a
+                source que casa com o media query. Com dois <Image> + hidden/md:block
+                as duas artes eram baixadas em todo viewport. */}
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcSet={carouselImages[currentIndex].desktopSrcSet}
+                sizes="100vw"
+              />
+              <img
+                src={carouselImages[currentIndex].mobileSrc}
+                alt={carouselImages[currentIndex].alt}
+                fetchPriority={currentIndex === 0 ? "high" : "auto"}
+                loading="eager"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover md:object-contain object-center select-none pointer-events-none"
+              />
+            </picture>
           </motion.div>
         </AnimatePresence>
       </div>
