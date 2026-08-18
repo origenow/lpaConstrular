@@ -5,11 +5,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 
+// Na mesma ordem em que as seções aparecem na página (page.tsx).
 const navItems = [
   { label: "Home", href: "#" },
-  { label: "Produtos", href: "#produtos" },
   { label: "Lojas", href: "#lojas" },
   { label: "Sobre", href: "#sobre" },
+  { label: "Produtos", href: "#produtos" },
 ];
 
 export function Header() {
@@ -17,32 +18,37 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
-    const sectionMap: Record<string, string> = {
-      produtos: "Produtos",
-      lojas: "Lojas",
-      sobre: "Sobre",
-    };
+    // Em ordem de documento (lojas → sobre → produtos): é isso que faz
+    // "a última seção visível vence" apontar para a seção certa.
+    const sections = [
+      { id: "lojas", label: "Lojas" },
+      { id: "sobre", label: "Sobre" },
+      { id: "produtos", label: "Produtos" },
+    ];
 
-    function onScroll() {
-      const scrollY = window.scrollY;
+    // Um IntersectionObserver por seção, com rootMargin recortando os 120px do
+    // topo. Substitui os 3 getBoundingClientRect() por evento de scroll, que
+    // forçavam layout síncrono a cada frame.
+    const visible = new Map<string, boolean>();
 
-      if (scrollY < 100) {
-        setActiveSection("Home");
-        return;
-      }
-
-      let current = "Home";
-      for (const [id, label] of Object.entries(sectionMap)) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 120) {
-          current = label;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          visible.set(entry.target.id, entry.isIntersecting);
         }
-      }
-      setActiveSection(current);
+        // A última seção cujo topo já passou da linha de 120px vence.
+        const current = sections.filter((s) => visible.get(s.id)).pop();
+        setActiveSection(current ? current.label : "Home");
+      },
+      { rootMargin: "-120px 0px 0px 0px", threshold: 0 }
+    );
+
+    for (const { id } of sections) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => observer.disconnect();
   }, []);
 
   function handleNavClick(label: string) {

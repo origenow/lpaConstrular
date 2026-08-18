@@ -5,6 +5,44 @@ import { useEffect, useState, useRef } from "react";
 import type React from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
+const WHATSAPP_BASE = "https://wa.me/553333411200?text=";
+
+function statWhatsAppUrl(message: string) {
+  return WHATSAPP_BASE + encodeURIComponent(message);
+}
+
+interface Stat {
+  to: number;
+  suffix: string;
+  label: string;
+  message: string;
+}
+
+/* Cada card abre o WhatsApp principal com a mensagem do seu proprio topico. */
+const stats: Stat[] = [
+  {
+    to: 34,
+    suffix: "+",
+    label: "Anos de Mercado",
+    message:
+      "Olá! Vi no site que a A Constrular tem mais de 34 anos de mercado. Queria falar com um consultor sobre a minha obra.",
+  },
+  {
+    to: 15,
+    suffix: "k",
+    label: "Obras Atendidas",
+    message:
+      "Olá! Vi que vocês já atenderam mais de 15 mil obras. Queria um orçamento de materiais para a minha.",
+  },
+  {
+    to: 6,
+    suffix: "",
+    label: "Unidades Físicas",
+    message:
+      "Olá! Vi que vocês têm 6 unidades físicas. Qual delas fica mais perto de mim e quais são os horários de funcionamento?",
+  },
+];
+
 interface CounterProps {
   from?: number;
   to: number;
@@ -75,47 +113,27 @@ export function SocialProofSection() {
           className="flex flex-col md:flex-row justify-around items-center gap-10 md:gap-lg"
         >
 
-          {/* Stat 1 */}
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="text-center cursor-pointer p-6 select-none"
-          >
-            <p className="font-bebas text-5xl md:text-6xl text-primary leading-none">
-              <Counter to={34} trigger={isInView} />+
-            </p>
-            <p className="font-label-bold text-sm text-text-secondary uppercase tracking-widest mt-2">
-              Anos de Mercado
-            </p>
-          </motion.div>
-
-          {/* Stat 2 */}
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="text-center cursor-pointer p-6 select-none"
-          >
-            <p className="font-bebas text-5xl md:text-6xl text-primary leading-none">
-              <Counter to={15} trigger={isInView} />k
-            </p>
-            <p className="font-label-bold text-sm text-text-secondary uppercase tracking-widest mt-2">
-              Obras Atendidas
-            </p>
-          </motion.div>
-
-          {/* Stat 3 */}
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="text-center cursor-pointer p-6 select-none"
-          >
-            <p className="font-bebas text-5xl md:text-6xl text-primary leading-none">
-              <Counter to={6} trigger={isInView} />
-            </p>
-            <p className="font-label-bold text-sm text-text-secondary uppercase tracking-widest mt-2">
-              Unidades Físicas
-            </p>
-          </motion.div>
+          {stats.map((stat) => (
+            <motion.a
+              key={stat.label}
+              href={statWhatsAppUrl(stat.message)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Falar no WhatsApp sobre ${stat.label}`}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="text-center cursor-pointer p-6 select-none"
+            >
+              <p className="font-bebas text-5xl md:text-6xl text-primary leading-none">
+                <Counter to={stat.to} trigger={isInView} />
+                {stat.suffix}
+              </p>
+              <p className="font-label-bold text-sm text-text-secondary uppercase tracking-widest mt-2">
+                {stat.label}
+              </p>
+            </motion.a>
+          ))}
 
         </motion.div>
       </div>

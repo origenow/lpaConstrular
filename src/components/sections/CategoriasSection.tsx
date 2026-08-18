@@ -6,15 +6,15 @@ import { motion } from "motion/react";
 const categorias = [
   {
     titulo: "ACABAMENTOS\n& PISOS",
-    imagem: "/produtos/piso.png"
+    imagem: "/produtos/piso.webp"
   },
   {
     titulo: "FERRAMENTAS\n& ELÉTRICA",
-    imagem: "/produtos/ferramentas.png"
+    imagem: "/produtos/ferramentas.webp"
   },
   {
     titulo: "MATERIAIS\nDE OBRA",
-    imagem: "/produtos/obra.png?v=2"
+    imagem: "/produtos/obra.webp"
   }
 ];
 
@@ -41,7 +41,7 @@ export function CategoriasSection() {
                 src={cat.imagem}
                 alt={cat.titulo}
                 fill
-                unoptimized
+                sizes="(min-width: 768px) 33vw, 100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/30" />
